@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AmplicodeDatabaseMigrationSettings" lastSelectedDirectory="src/main/resources/db" />
+  <component name="AmplicodePersistenceUnitSettings">
+    <persistence-units>
+      <persistence-unit name="Default">
+        <packages>
+          <package value="hexlet.code.app" />
+        </packages>
+      </persistence-unit>
+    </persistence-units>
+  </component>
+</project>

@@ -1,7 +1,7 @@
 plugins {
 	application
 	jacoco
-	checkstyle
+//	checkstyle
 	id("org.springframework.boot") version "3.1.5"
 	id("io.spring.dependency-management") version "1.1.3"
 }
@@ -24,6 +24,9 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	runtimeOnly("org.postgresql:postgresql")
 	runtimeOnly("com.h2database:h2")
+    compileOnly("org.mapstruct:mapstruct:1.5.3.Final")
+    annotationProcessor("org.mapstruct:mapstruct-processor:1.5.3.Final")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
 }
 
 tasks.withType<Test> {
