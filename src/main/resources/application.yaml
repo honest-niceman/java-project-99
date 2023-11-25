@@ -1,6 +1,6 @@
 spring:
   profiles:
-    active: ${APP_ENV}
+    active: ${APP_ENV:dev}
   jpa:
     show-sql: true
     properties:
@@ -10,3 +10,5 @@ spring:
   output:
     ansi:
       enabled: always
+  liquibase:
+    enabled: false

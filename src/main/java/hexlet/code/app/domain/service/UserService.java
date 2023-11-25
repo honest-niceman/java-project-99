@@ -1,27 +1,25 @@
-package hexlet.code.app.service;
+package hexlet.code.app.domain.service;
 
-import hexlet.code.app.dtos.UserRequestDto;
-import hexlet.code.app.dtos.UserResponseDto;
-import hexlet.code.app.mappers.UserMapper;
-import hexlet.code.app.model.User;
-import hexlet.code.app.repository.UserRepository;
+import hexlet.code.app.domain.dtos.UserRequestDto;
+import hexlet.code.app.domain.dtos.UserResponseDto;
+import hexlet.code.app.domain.mappers.UserMapper;
+import hexlet.code.app.domain.model.User;
+import hexlet.code.app.domain.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@RequiredArgsConstructor
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
-
-    public UserService(UserRepository userRepository,
-                       UserMapper userMapper) {
-        this.userRepository = userRepository;
-        this.userMapper = userMapper;
-    }
+    private final PasswordEncoder passwordEncoder;
 
     public List<UserResponseDto> findAll() {
         List<User> users = userRepository.findAll();
@@ -36,8 +34,8 @@ public class UserService {
     }
 
     public UserResponseDto save(UserRequestDto userRequestDto) {
-        int hashCode = userRequestDto.getPassword().hashCode();
-        userRequestDto.setPassword(String.valueOf(hashCode));
+        String encodedPassword = passwordEncoder.encode(userRequestDto.getPassword());
+        userRequestDto.setPassword(encodedPassword);
         User user = userMapper.toEntity(userRequestDto);
         user.setCreatedAt(Instant.now());
         User resultUser = userRepository.save(user);

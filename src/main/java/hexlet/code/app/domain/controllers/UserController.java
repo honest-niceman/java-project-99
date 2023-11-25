@@ -1,9 +1,10 @@
-package hexlet.code.app.controllers;
+package hexlet.code.app.domain.controllers;
 
-import hexlet.code.app.dtos.UserRequestDto;
-import hexlet.code.app.dtos.UserResponseDto;
-import hexlet.code.app.service.UserService;
+import hexlet.code.app.domain.dtos.UserRequestDto;
+import hexlet.code.app.domain.dtos.UserResponseDto;
+import hexlet.code.app.domain.service.UserService;
 import jakarta.validation.Valid;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize(value = "@userService.findById(#id).getUsername() == authentication.name")
     public void deleteById(@PathVariable Long id) {
         userService.deleteById(id);
     }
@@ -39,6 +41,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize(value = "@userService.findById(#id).getUsername() == authentication.name")
     public UserResponseDto updateById(@PathVariable Long id,
                                       @Valid @RequestBody UserRequestDto userRequestDto) {
         return userService.updateById(id, userRequestDto);
