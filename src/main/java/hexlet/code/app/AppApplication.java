@@ -27,11 +27,15 @@ public class AppApplication implements CommandLineRunner {
     public void run(String... args) {
         User user = new User();
         user.setEmail("hexlet@example.com");
+        user.setFirstName("Hex");
+        user.setLastName("Let");
         user.setPassword(passwordEncoder.encode("qwerty"));
         userRepository.save(user);
         User user1 = new User();
         user1.setEmail("hexlet1@example.com");
         user1.setPassword(passwordEncoder.encode("qwerty"));
+        user1.setFirstName("Hex1");
+        user1.setLastName("Let1");
         userRepository.save(user1);
     }
 }

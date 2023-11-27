@@ -42,11 +42,17 @@ public class UserService {
         return userMapper.toDto(resultUser);
     }
 
+    public long count() {
+        return userRepository.count();
+    }
+
     public void deleteById(Long id) {
         userRepository.deleteById(id);
     }
 
     public UserResponseDto updateById(Long id, UserRequestDto userRequestDto) {
+        String encodedPassword = passwordEncoder.encode(userRequestDto.getPassword());
+        userRequestDto.setPassword(encodedPassword);
         User user = userRepository.findById(id).orElseThrow();
         User updated = userMapper.partialUpdate(userRequestDto, user);
         User saved = userRepository.save(updated);

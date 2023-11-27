@@ -4,6 +4,9 @@ import hexlet.code.app.domain.dtos.UserRequestDto;
 import hexlet.code.app.domain.dtos.UserResponseDto;
 import hexlet.code.app.domain.service.UserService;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,14 +23,19 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize(value = "@userService.findById(#id).getUsername() == authentication.name")
+    @PreAuthorize(value = "@userService.findById(#id).getEmail() == authentication.name")
     public void deleteById(@PathVariable Long id) {
         userService.deleteById(id);
     }
 
     @GetMapping
-    public List<UserResponseDto> findAll() {
-        return userService.findAll();
+    public ResponseEntity<List<UserResponseDto>> findAll() {
+        List<UserResponseDto> users = userService.findAll();
+        long totalCount = userService.count();
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("X-Total-Count", String.valueOf(totalCount));
+
+        return new ResponseEntity<>(users, headers, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
@@ -41,7 +49,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize(value = "@userService.findById(#id).getUsername() == authentication.name")
+    @PreAuthorize(value = "@userService.findById(#id).getEmail() == authentication.name")
     public UserResponseDto updateById(@PathVariable Long id,
                                       @Valid @RequestBody UserRequestDto userRequestDto) {
         return userService.updateById(id, userRequestDto);

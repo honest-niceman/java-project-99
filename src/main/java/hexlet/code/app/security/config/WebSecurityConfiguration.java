@@ -50,15 +50,20 @@ public class WebSecurityConfiguration {
 
     public static final RequestMatcher PUBLIC_URLS = new OrRequestMatcher(
             new AntPathRequestMatcher("/api/login/**"),
-            new AntPathRequestMatcher("/welcome")
+            new AntPathRequestMatcher("/welcome"),
+            new AntPathRequestMatcher("/"),
+            new AntPathRequestMatcher("/index.html"),
+            new AntPathRequestMatcher("/assets/**")
     );
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.sessionManagement(AbstractHttpConfigurer::disable);
         http.csrf(AbstractHttpConfigurer::disable);
+        http.cors(AbstractHttpConfigurer::disable);
         http.logout(AbstractHttpConfigurer::disable);
         http.formLogin(AbstractHttpConfigurer::disable);
+        http.headers(AbstractHttpConfigurer::disable);
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         //Authorize Requests
