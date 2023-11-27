@@ -1,4 +1,4 @@
-package hexlet.code.app.domain.errors;
+package hexlet.code.app.errors;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

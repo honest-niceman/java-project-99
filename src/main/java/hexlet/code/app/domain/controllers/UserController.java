@@ -4,6 +4,7 @@ import hexlet.code.app.domain.dtos.UserRequestDto;
 import hexlet.code.app.domain.dtos.UserResponseDto;
 import hexlet.code.app.domain.service.UserService;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,20 +13,18 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
 
     private final UserService userService;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
-
     @DeleteMapping("/{id}")
     @PreAuthorize(value = "@userService.findById(#id).getEmail() == authentication.name")
-    public void deleteById(@PathVariable Long id) {
+    public ResponseEntity<String> deleteById(@PathVariable Long id) {
         userService.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping

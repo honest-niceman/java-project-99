@@ -37,6 +37,8 @@ dependencies {
 	annotationProcessor("org.projectlombok:lombok-mapstruct-binding:0.2.0")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.springframework.security:spring-security-test")
+	testImplementation("org.skyscreamer:jsonassert:1.5.1")
 }
 
 tasks.withType<Test> {
