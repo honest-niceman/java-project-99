@@ -1,4 +1,4 @@
-package hexlet.code.app.domain.service;
+package hexlet.code.app.domain.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

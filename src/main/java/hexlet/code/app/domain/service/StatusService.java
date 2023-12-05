@@ -1,5 +1,6 @@
 package hexlet.code.app.domain.service;
 
+import hexlet.code.app.domain.dtos.StatusRequest;
 import hexlet.code.app.domain.dtos.StatusResponse;
 import hexlet.code.app.domain.mappers.StatusMapper;
 import hexlet.code.app.domain.model.Status;

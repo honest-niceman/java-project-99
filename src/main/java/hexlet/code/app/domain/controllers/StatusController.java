@@ -1,7 +1,7 @@
 package hexlet.code.app.domain.controllers;
 
 import hexlet.code.app.domain.dtos.StatusResponse;
-import hexlet.code.app.domain.service.StatusRequest;
+import hexlet.code.app.domain.dtos.StatusRequest;
 import hexlet.code.app.domain.service.StatusService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
