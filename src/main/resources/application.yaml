@@ -13,3 +13,9 @@ spring:
   sql:
     init:
       mode: always
+sentry:
+  dsn: https://743c0177ed86437e4973f45635893098@o4506344849997824.ingest.sentry.io/4506344852226048
+  # Set traces-sample-rate to 1.0 to capture 100% of transactions for performance monitoring.
+  # We recommend adjusting this value in production.
+  traces-sample-rate: 1.0
+  exception-resolver-order: -2147483647
