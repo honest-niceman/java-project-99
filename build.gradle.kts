@@ -1,7 +1,7 @@
 plugins {
 	application
 	jacoco
-//	checkstyle
+	checkstyle
 	id("org.springframework.boot") version "3.1.5"
 	id("io.spring.dependency-management") version "1.1.3"
 }
@@ -24,7 +24,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("io.jsonwebtoken:jjwt:0.9.1")
-	implementation("org.liquibase:liquibase-core")
+	implementation("javax.xml.bind:jaxb-api:2.3.1")
 
 	runtimeOnly("org.postgresql:postgresql")
 	runtimeOnly("com.h2database:h2")

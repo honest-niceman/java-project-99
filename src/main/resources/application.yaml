@@ -10,5 +10,6 @@ spring:
   output:
     ansi:
       enabled: always
-  liquibase:
-    enabled: false
+  sql:
+    init:
+      mode: always
