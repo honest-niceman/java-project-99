@@ -39,10 +39,6 @@ public class StatusService {
         return statusMapper.toDto(saved);
     }
 
-    public long count() {
-        return statusRepository.count();
-    }
-
     public void deleteById(Long id) {
         statusRepository.deleteById(id);
     }

@@ -27,9 +27,8 @@ public class StatusController {
     @GetMapping
     public ResponseEntity<List<StatusResponse>> findAll() {
         List<StatusResponse> statuses = statusService.findAll();
-        long totalCount = statusService.count();
         HttpHeaders headers = new HttpHeaders();
-        headers.add("X-Total-Count", String.valueOf(totalCount));
+        headers.add("X-Total-Count", String.valueOf(statuses.size()));
 
         return new ResponseEntity<>(statuses, headers, HttpStatus.OK);
     }

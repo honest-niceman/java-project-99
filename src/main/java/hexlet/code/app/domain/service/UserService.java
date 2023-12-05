@@ -42,10 +42,6 @@ public class UserService {
         return userMapper.toDto(resultUser);
     }
 
-    public long count() {
-        return userRepository.count();
-    }
-
     public void deleteById(Long id) {
         userRepository.deleteById(id);
     }

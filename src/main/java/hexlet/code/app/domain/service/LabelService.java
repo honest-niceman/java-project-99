@@ -39,10 +39,6 @@ public class LabelService {
         return labelMapper.toLabelResponse(saved);
     }
 
-    public long count() {
-        return labelRepository.count();
-    }
-
     public void deleteById(Long id) {
         labelRepository.deleteById(id);
     }

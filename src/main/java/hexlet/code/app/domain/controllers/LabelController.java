@@ -36,9 +36,8 @@ public class LabelController {
     @GetMapping
     public ResponseEntity<List<LabelResponse>> findAll() {
         List<LabelResponse> labels = labelService.findAll();
-        long totalCount = labelService.count();
         HttpHeaders headers = new HttpHeaders();
-        headers.add("X-Total-Count", String.valueOf(totalCount));
+        headers.add("X-Total-Count", String.valueOf(labels.size()));
 
         return new ResponseEntity<>(labels, headers, HttpStatus.OK);
     }
