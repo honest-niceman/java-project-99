@@ -12,7 +12,10 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -85,8 +88,8 @@ public class StatusControllerTest {
         //language=json
         String statusRequest = """
                 {
-                	"name": "To Be Reviewed",
-                	"slug": "to_be_reviewed"
+                  "name": "To Be Reviewed",
+                  "slug": "to_be_reviewed"
                 }""";
 
         mockMvc.perform(post("/api/task_statuses")
@@ -108,8 +111,8 @@ public class StatusControllerTest {
         //language=json
         String statusRequest = """
                 {
-                	"name": "New Name",
-                	"slug": "new_name"
+                  "name": "New Name",
+                  "slug": "new_name"
                 }""";
 
         mockMvc.perform(put("/api/task_statuses/{id}", id)

@@ -11,7 +11,10 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -79,10 +82,10 @@ public class UserControllerTest {
         //language=json
         var userRequestDto = """
                 {
-                	"firstName": "New",
-                	"lastName": "New1",
-                	"password": "password",
-                	"email": "newemail@email.com"
+                  "firstName": "New",
+                  "lastName": "New1",
+                  "password": "password",
+                  "email": "newemail@email.com"
                 }""";
         mockMvc.perform(put("/api/users/{id}", id)
                         .content(userRequestDto)
@@ -100,10 +103,10 @@ public class UserControllerTest {
         //language=json
         var userRequestDto = """
                 {
-                	"firstName": "John",
-                	"lastName": "Doe",
-                	"email": "john@doe.com",
-                	"password": "johny"
+                  "firstName": "John",
+                  "lastName": "Doe",
+                  "email": "john@doe.com",
+                  "password": "johny"
                 }""";
         mockMvc.perform(post("/api/users")
                         .content(userRequestDto)

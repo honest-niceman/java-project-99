@@ -11,7 +11,10 @@ import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -82,7 +85,7 @@ public class LabelControllerTest {
         //language=json
         String labelRequest = """
                 {
-                	"name": "new"
+                  "name": "new"
                 }""";
 
         mockMvc.perform(post("/api/labels")
@@ -104,7 +107,7 @@ public class LabelControllerTest {
         //language=json
         String labelRequest = """
                 {
-                	"name": "new name"
+                  "name": "new name"
                 }""";
 
         mockMvc.perform(put("/api/labels/{id}", id)
