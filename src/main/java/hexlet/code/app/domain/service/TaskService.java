@@ -11,7 +11,10 @@ import hexlet.code.app.domain.repository.LabelRepository;
 import hexlet.code.app.domain.repository.StatusRepository;
 import hexlet.code.app.domain.repository.TaskRepository;
 import hexlet.code.app.domain.repository.UserRepository;
+import hexlet.code.app.domain.specification.TaskParams;
+import hexlet.code.app.domain.specification.TaskSpecification;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -25,14 +28,16 @@ public class TaskService {
     private final StatusRepository statusRepository;
     private final UserRepository userRepository;
     private final LabelRepository labelRepository;
+    private final TaskSpecification taskSpecification;
 
     public TaskResponse findById(Long id) {
         Task task = taskRepository.findById(id).orElseThrow();
         return taskMapper.toTaskResponse(task);
     }
 
-    public List<TaskResponse> findAll() {
-        return taskRepository.findAll().stream().map(taskMapper::toTaskResponse).toList();
+    public List<TaskResponse> findAll(TaskParams taskParams) {
+        Specification<Task> specification = taskSpecification.build(taskParams);
+        return taskRepository.findAll(specification).stream().map(taskMapper::toTaskResponse).toList();
     }
 
     public TaskResponse save(TaskRequest taskRequest) {
@@ -53,10 +58,6 @@ public class TaskService {
 
         Task saved = taskRepository.save(updated);
         return taskMapper.toTaskResponse(saved);
-    }
-
-    public long count() {
-        return taskRepository.count();
     }
 
     public void deleteById(Long id) {

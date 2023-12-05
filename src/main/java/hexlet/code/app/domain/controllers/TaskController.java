@@ -3,6 +3,7 @@ package hexlet.code.app.domain.controllers;
 import hexlet.code.app.domain.dtos.TaskRequest;
 import hexlet.code.app.domain.dtos.TaskResponse;
 import hexlet.code.app.domain.service.TaskService;
+import hexlet.code.app.domain.specification.TaskParams;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -34,11 +35,10 @@ public class TaskController {
     }
 
     @GetMapping
-    public ResponseEntity<List<TaskResponse>> findAll() {
-        List<TaskResponse> tasks = taskService.findAll();
-        long totalCount = taskService.count();
+    public ResponseEntity<List<TaskResponse>> findAll(TaskParams taskParams) {
+        List<TaskResponse> tasks = taskService.findAll(taskParams);
         HttpHeaders headers = new HttpHeaders();
-        headers.add("X-Total-Count", String.valueOf(totalCount));
+        headers.add("X-Total-Count", String.valueOf(tasks.size()));
 
         return new ResponseEntity<>(tasks, headers, HttpStatus.OK);
     }
