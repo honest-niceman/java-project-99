@@ -4,7 +4,12 @@ import hexlet.code.app.domain.dtos.TaskRequest;
 import hexlet.code.app.domain.dtos.TaskResponse;
 import hexlet.code.app.domain.model.Label;
 import hexlet.code.app.domain.model.Task;
-import org.mapstruct.*;
+import org.mapstruct.InheritConfiguration;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingConstants;
+import org.mapstruct.MappingTarget;
+import org.mapstruct.ReportingPolicy;
 
 import java.util.Set;
 import java.util.stream.Collectors;
