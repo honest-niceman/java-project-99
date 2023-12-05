@@ -53,6 +53,9 @@ public class WebSecurityConfiguration {
             new AntPathRequestMatcher("/welcome"),
             new AntPathRequestMatcher("/"),
             new AntPathRequestMatcher("/index.html"),
+            new AntPathRequestMatcher("/v3/api-docs/**"),
+            new AntPathRequestMatcher("/swagger-ui.html"),
+            new AntPathRequestMatcher("/swagger-ui/**"),
             new AntPathRequestMatcher("/assets/**")
     );
 
