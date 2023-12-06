@@ -69,5 +69,5 @@ sentry {
 }
 
 tasks.sentryBundleSourcesJava {
-	environment("SENTRY_AUTH_TOKEN", System.getenv("SENTRY_AUTH_TOKEN"))
+	enabled = System.getenv("SENTRY_AUTH_TOKEN") != null
 }
