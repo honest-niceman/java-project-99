@@ -67,3 +67,7 @@ sentry {
 	projectName = "java-spring-boot"
 	authToken = System.getenv("SENTRY_AUTH_TOKEN")
 }
+
+tasks.sentryBundleSourcesJava {
+	environment("SENTRY_AUTH_TOKEN", System.getenv("SENTRY_AUTH_TOKEN"))
+}
