@@ -1,8 +1,8 @@
 spring:
   datasource:
-    username: ${JDBC_DATABASE_USERNAME}
-    password: ${JDBC_DATABASE_PASSWORD}
-    url: ${JDBC_DATABASE_URL}
+    username: ${JDBC_DATABASE_USERNAME:root}
+    password: ${JDBC_DATABASE_PASSWORD:root}
+    url: ${JDBC_DATABASE_URL:jdbc:postgresql://localhost:5432/java-project-99}
   jpa:
     hibernate:
       ddl-auto: validate
