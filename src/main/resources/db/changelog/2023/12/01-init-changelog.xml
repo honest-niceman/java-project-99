@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd"
         objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
-    <changeSet id="1701850943788-1" author="georgii (generated)">
+    <changeSet id="1701856078635-1" author="georgii (generated)">
         <createTable tableName="labels">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_labels"/>
@@ -14,7 +14,7 @@
             <column name="created_at" type="DATETIME"/>
         </createTable>
     </changeSet>
-    <changeSet id="1701850943788-2" author="georgii (generated)">
+    <changeSet id="1701856078635-2" author="georgii (generated)">
         <createTable tableName="statuses">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_statuses"/>
@@ -28,7 +28,7 @@
             <column name="created_at" type="DATETIME"/>
         </createTable>
     </changeSet>
-    <changeSet id="1701850943788-3" author="georgii (generated)">
+    <changeSet id="1701856078635-3" author="georgii (generated)">
         <createTable tableName="tasks">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_tasks"/>
@@ -38,14 +38,12 @@
             </column>
             <column name="index" type="BIGINT"/>
             <column name="description" type="VARCHAR(255)"/>
-            <column name="task_status_id" type="BIGINT">
-                <constraints nullable="false"/>
-            </column>
+            <column name="task_status_id" type="BIGINT"/>
             <column name="assignee_id" type="BIGINT"/>
             <column name="created_at" type="DATETIME"/>
         </createTable>
     </changeSet>
-    <changeSet id="1701850943788-4" author="georgii (generated)">
+    <changeSet id="1701856078635-4" author="georgii (generated)">
         <createTable tableName="tasks_labels">
             <column name="labels_id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_tasks_labels"/>
@@ -55,7 +53,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet id="1701850943788-5" author="georgii (generated)">
+    <changeSet id="1701856078635-5" author="georgii (generated)">
         <createTable tableName="users">
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_users"/>
@@ -72,37 +70,36 @@
             <column name="updated_at" type="DATETIME"/>
         </createTable>
     </changeSet>
-    <changeSet id="1701850943788-6" author="georgii (generated)">
+    <changeSet id="1701856078635-6" author="georgii (generated)">
         <addUniqueConstraint columnNames="name" constraintName="uc_labels_name" tableName="labels"/>
     </changeSet>
-    <changeSet id="1701850943788-7" author="georgii (generated)">
+    <changeSet id="1701856078635-7" author="georgii (generated)">
         <addUniqueConstraint columnNames="name" constraintName="uc_statuses_name" tableName="statuses"/>
     </changeSet>
-    <changeSet id="1701850943788-8" author="georgii (generated)">
+    <changeSet id="1701856078635-8" author="georgii (generated)">
         <addUniqueConstraint columnNames="slug" constraintName="uc_statuses_slug" tableName="statuses"/>
     </changeSet>
-    <changeSet id="1701850943788-9" author="georgii (generated)">
+    <changeSet id="1701856078635-9" author="georgii (generated)">
         <addUniqueConstraint columnNames="email" constraintName="uc_users_email" tableName="users"/>
     </changeSet>
-    <changeSet id="1701850943788-10" author="georgii (generated)">
+    <changeSet id="1701856078635-10" author="georgii (generated)">
         <addForeignKeyConstraint baseColumnNames="assignee_id" baseTableName="tasks"
                                  constraintName="FK_TASKS_ON_ASSIGNEE" referencedColumnNames="id"
                                  referencedTableName="users"/>
     </changeSet>
-    <changeSet id="1701850943788-11" author="georgii (generated)">
+    <changeSet id="1701856078635-11" author="georgii (generated)">
         <addForeignKeyConstraint baseColumnNames="task_status_id" baseTableName="tasks"
                                  constraintName="FK_TASKS_ON_TASK_STATUS" referencedColumnNames="id"
                                  referencedTableName="statuses"/>
     </changeSet>
-    <changeSet id="1701850943788-12" author="georgii (generated)">
+    <changeSet id="1701856078635-12" author="georgii (generated)">
         <addForeignKeyConstraint baseColumnNames="labels_id" baseTableName="tasks_labels"
                                  constraintName="fk_taslab_on_label" referencedColumnNames="id"
                                  referencedTableName="labels"/>
     </changeSet>
-    <changeSet id="1701850943788-13" author="georgii (generated)">
+    <changeSet id="1701856078635-13" author="georgii (generated)">
         <addForeignKeyConstraint baseColumnNames="task_id" baseTableName="tasks_labels"
                                  constraintName="fk_taslab_on_task" referencedColumnNames="id"
                                  referencedTableName="tasks"/>
     </changeSet>
-
 </databaseChangeLog>

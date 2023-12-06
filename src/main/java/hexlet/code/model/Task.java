@@ -40,8 +40,8 @@ public class Task {
     @Column(name = "description")
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "task_status_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "task_status_id")
     private TaskStatus taskStatus;
 
     @ManyToOne(fetch = FetchType.LAZY)
