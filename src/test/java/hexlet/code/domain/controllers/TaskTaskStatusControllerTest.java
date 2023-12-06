@@ -49,7 +49,7 @@ public class TaskTaskStatusControllerTest {
         mockMvc.perform(delete("/api/task_statuses/{id}", id)
                         .with(SecurityMockMvcRequestPostProcessors.user("user")))
                 .andExpect(status()
-                        .isOk())
+                        .isNoContent())
                 .andDo(print());
     }
 
@@ -97,7 +97,7 @@ public class TaskTaskStatusControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .with(SecurityMockMvcRequestPostProcessors.user("user")))
                 .andExpect(status()
-                        .isOk())
+                        .isCreated())
                 .andDo(print());
     }
 

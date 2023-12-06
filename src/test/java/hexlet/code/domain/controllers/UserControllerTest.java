@@ -112,7 +112,8 @@ public class UserControllerTest {
                         .content(userRequestDto)
                         .contentType(MediaType.APPLICATION_JSON)
                         .with(SecurityMockMvcRequestPostProcessors.user("user")))
-                .andExpect(status().isOk())
+                .andExpect(status()
+                        .isCreated())
                 .andDo(print());
     }
 }

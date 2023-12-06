@@ -46,7 +46,7 @@ public class LabelControllerTest {
         mockMvc.perform(delete("/api/labels/{id}", id)
                         .with(SecurityMockMvcRequestPostProcessors.user("admin")))
                 .andExpect(status()
-                        .isOk())
+                        .isNoContent())
                 .andDo(print());
     }
 
@@ -93,7 +93,7 @@ public class LabelControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .with(SecurityMockMvcRequestPostProcessors.user("user")))
                 .andExpect(status()
-                        .isOk())
+                        .isCreated())
                 .andDo(print());
     }
 

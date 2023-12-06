@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -27,11 +28,13 @@ public class TaskController {
     private final TaskService taskService;
 
     @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public TaskResponse updateById(@PathVariable Long id, @RequestBody TaskRequest taskRequest) {
         return taskService.updateById(id, taskRequest);
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public TaskResponse save(@RequestBody TaskRequest taskRequest) {
         return taskService.save(taskRequest);
     }
@@ -51,6 +54,7 @@ public class TaskController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteById(@PathVariable Long id) {
         taskService.deleteById(id);
     }

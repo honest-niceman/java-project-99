@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -26,11 +27,13 @@ public class LabelController {
     private final LabelService labelService;
 
     @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public LabelResponse updateById(@PathVariable Long id, @RequestBody LabelRequest labelRequest) {
         return labelService.updateById(id, labelRequest);
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public LabelResponse save(@RequestBody LabelRequest labelRequest) {
         return labelService.save(labelRequest);
     }
@@ -50,6 +53,7 @@ public class LabelController {
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteById(@PathVariable Long id) {
         labelService.deleteById(id);
     }

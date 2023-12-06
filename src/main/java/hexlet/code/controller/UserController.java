@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -29,6 +30,7 @@ public class UserController {
 
     @DeleteMapping("/{id}")
     @PreAuthorize(value = "@userService.findById(#id).getEmail() == authentication.name")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<String> deleteById(@PathVariable Long id) {
         userService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
@@ -49,12 +51,14 @@ public class UserController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public UserResponseDto save(@RequestBody @Valid UserRequestDto userRequestDto) {
         return userService.save(userRequestDto);
     }
 
     @PutMapping("/{id}")
     @PreAuthorize(value = "@userService.findById(#id).getEmail() == authentication.name")
+    @ResponseStatus(HttpStatus.OK)
     public UserResponseDto updateById(@PathVariable Long id,
                                       @Valid @RequestBody UserRequestDto userRequestDto) {
         return userService.updateById(id, userRequestDto);

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -41,17 +42,20 @@ public class TaskStatusController {
     }
 
     @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public TaskStatusResponse updateById(@PathVariable Long id,
                                          @RequestBody @Valid TaskStatusRequest taskStatusRequest) {
         return statusService.updateById(id, taskStatusRequest);
     }
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
         statusService.deleteById(id);
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public TaskStatusResponse save(@RequestBody @Valid TaskStatusRequest taskStatusRequest) {
         return statusService.save(taskStatusRequest);
     }
