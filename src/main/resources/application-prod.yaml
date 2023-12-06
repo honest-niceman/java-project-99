@@ -5,4 +5,4 @@ spring:
     url: ${JDBC_DATABASE_URL}
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate

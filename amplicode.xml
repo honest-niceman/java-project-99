@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AmplicodeDatabaseMigrationSettings" lastSelectedDirectory="src/main/resources/db" />
+  <component name="AmplicodeDatabaseMigrationSettings" lastSelectedDirectory="src/main/resources/db">
+    <database-infos>
+      <database-info>
+        <option name="enabled" value="true" />
+        <dbms-id>postgres</dbms-id>
+      </database-info>
+    </database-infos>
+  </component>
   <component name="AmplicodePersistenceUnitSettings">
     <persistence-units>
-      <persistence-unit name="Default">
+      <persistence-unit name="Default" defaultIncludeChangeLogFile="src/main/resources/db/changelog/db.changelog-master.xml">
         <packages>
-          <package value="hexlet.code.app" />
+          <package value="hexlet.code" />
         </packages>
       </persistence-unit>
     </persistence-units>
