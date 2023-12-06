@@ -3,13 +3,13 @@ INTO
   tasks
   (id, name, task_status_id, index, description, assignee_id, created_at)
 VALUES
-  (1, 'first task', 1, 100, 'first task description', 1, NOW());
+  (101, 'test first task', 101, 100, 'test first task description', 101, NOW());
 
 INSERT
 INTO
   tasks
   (id, name, task_status_id, index, description, assignee_id, created_at)
 VALUES
-  (2, 'second task', 2, 200, 'second task description', 2, NOW());
+  (102, 'test second task', 102, 200, 'test second task description', 102, NOW());
 
-ALTER TABLE tasks ALTER COLUMN id RESTART WITH 3;
+ALTER TABLE tasks ALTER COLUMN id RESTART WITH 103;

@@ -107,7 +107,7 @@ public class TaskTaskStatusControllerTest {
     @Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = "fixtures/status/delete-statuses.sql")
     public void updateByIdTest() throws Exception {
         //language=json
-        String id = "1";
+        String id = "101";
         //language=json
         String statusRequest = """
                 {

@@ -3,18 +3,18 @@ INTO
   labels
   (id, name)
 VALUES
-  (1, 'bug');
+  (101, 'test_bug');
 INSERT
 INTO
   labels
   (id, name)
 VALUES
-  (2, 'feature');
+  (102, 'test_feature');
 INSERT
 INTO
   labels
   (id, name)
 VALUES
-  (3, 'obsolete');
+  (103, 'test_obsolete');
 
-ALTER TABLE labels ALTER COLUMN id RESTART WITH 4;
+ALTER TABLE labels ALTER COLUMN id RESTART WITH 104;

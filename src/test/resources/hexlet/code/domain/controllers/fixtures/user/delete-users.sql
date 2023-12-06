@@ -1,4 +1,4 @@
 DELETE
 FROM
   users
-WHERE id IN (1,2,3);
+WHERE id IN (101,102,103);

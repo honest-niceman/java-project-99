@@ -68,7 +68,7 @@ public class LabelControllerTest {
     @Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = "fixtures/label/delete-labels.sql")
     public void findByIdTest() throws Exception {
         //language=json
-        String id = "1";
+        String id = "101";
 
         mockMvc.perform(get("/api/labels/{id}", id)
                         .with(SecurityMockMvcRequestPostProcessors.user("user")))
@@ -103,7 +103,7 @@ public class LabelControllerTest {
     @Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = "fixtures/label/delete-labels.sql")
     public void updateByIdTest() throws Exception {
         //language=json
-        String id = "1";
+        String id = "101";
         //language=json
         String labelRequest = """
                 {

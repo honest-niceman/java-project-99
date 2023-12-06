@@ -5,4 +5,4 @@ FROM
 DELETE
 FROM
   tasks
-WHERE id IN (1,2);
+WHERE id IN (101,102);

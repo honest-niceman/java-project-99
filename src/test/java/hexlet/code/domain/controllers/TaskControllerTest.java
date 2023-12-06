@@ -113,7 +113,7 @@ public class TaskControllerTest {
     })
     public void findByIdTest() throws Exception {
         //language=json
-        String id = "1";
+        String id = "101";
 
         mockMvc.perform(get("/api/tasks/{id}", id)
                         .with(SecurityMockMvcRequestPostProcessors.user("user")))
@@ -138,11 +138,11 @@ public class TaskControllerTest {
                   "title": "t",
                   "index": "121",
                   "content": "c",
-                  "status": "first_status",
-                  "assignee_id": 1,
+                  "status": "test_first_status",
+                  "assignee_id": "101",
                   "taskLabelIds": [
-                    "1",
-                    "2"
+                    "101",
+                    "102"
                   ]
                 }""";
 
@@ -171,17 +171,17 @@ public class TaskControllerTest {
     })
     public void updateByIdTest() throws Exception {
         //language=json
-        String id = "1";
+        String id = "101";
         //language=json
         String taskRequest = """
                 {
                   "title": "newT",
-                  "index": 121,
+                  "index": "121",
                   "content": "newC",
-                  "status": "second_status",
-                  "assigneeId": 2,
+                  "status": "test_second_status",
+                  "assigneeId": "102",
                   "taskLabelIds": [
-                    2
+                    "102"
                   ]
                 }""";
 

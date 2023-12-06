@@ -52,7 +52,7 @@ public class UserControllerTest {
     @Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = "fixtures/user/delete-users.sql")
     public void deleteByIdTest() throws Exception {
         //language=json
-        var id = "1";
+        var id = "101";
         mockMvc.perform(delete("/api/users/{id}", id)
                         .with(SecurityMockMvcRequestPostProcessors.user("admin")))
                 .andExpect(status().isOk())
@@ -78,7 +78,7 @@ public class UserControllerTest {
     @Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = "fixtures/user/delete-users.sql")
     public void updateByIdTest() throws Exception {
         //language=json
-        var id = "1";
+        var id = "101";
         //language=json
         var userRequestDto = """
                 {
