@@ -31,7 +31,7 @@ public class Task {
     private Long id;
 
     @Size(min = 1)
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     private String name;
 
     @Column(name = "index")

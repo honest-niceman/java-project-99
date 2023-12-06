@@ -24,11 +24,11 @@ public class TaskStatus {
     private Long id;
 
     @Size(min = 1)
-    @Column(name = "name", nullable = false, unique = true)
+    @Column(name = "name", unique = true)
     private String name;
 
     @Size(min = 1)
-    @Column(name = "slug", nullable = false, unique = true)
+    @Column(name = "slug", unique = true)
     private String slug;
 
     @CreationTimestamp
