@@ -4,11 +4,13 @@ import hexlet.code.dto.TaskRequest;
 import hexlet.code.dto.TaskResponse;
 import hexlet.code.model.Label;
 import hexlet.code.model.Task;
+import org.mapstruct.BeanMapping;
 import org.mapstruct.InheritConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 import org.mapstruct.MappingTarget;
+import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.ReportingPolicy;
 
 import java.util.Set;
@@ -31,6 +33,7 @@ public interface TaskMapper {
     @Mapping(source = "name", target = "title")
     @Mapping(source = "assignee.id", target = "assigneeId")
     @Mapping(target = "taskLabelIds", expression = "java(labelsToLabelIds(task.getLabels()))")
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.SET_TO_NULL)
     TaskResponse toTaskResponse(Task task);
 
     default Set<Long> labelsToLabelIds(Set<Label> labels) {
