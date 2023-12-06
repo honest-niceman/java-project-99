@@ -23,7 +23,5 @@ Spring Boot, Security, Data JPA, Docker, H2, PostgreSQL, PaaS Render, Sentry, Sw
 
 [LIVE ON RENDER.COM](https://java-project-99-j27g.onrender.com)
 
-```
-login: hexlet@example.com
-password: qwerty
-```
+login: `hexlet@example.com`
+password: `qwerty`
