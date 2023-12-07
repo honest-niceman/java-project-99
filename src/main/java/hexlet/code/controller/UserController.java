@@ -31,9 +31,8 @@ public class UserController {
     @DeleteMapping("/{id}")
     @PreAuthorize(value = "@userService.findById(#id).getEmail() == authentication.name")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity<String> deleteById(@PathVariable Long id) {
+    public void deleteById(@PathVariable Long id) {
         userService.deleteById(id);
-        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping

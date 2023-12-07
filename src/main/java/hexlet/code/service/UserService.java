@@ -47,8 +47,10 @@ public class UserService {
     }
 
     public UserResponseDto updateById(Long id, UserRequestDto userRequestDto) {
-        String encodedPassword = passwordEncoder.encode(userRequestDto.getPassword());
-        userRequestDto.setPassword(encodedPassword);
+        if (userRequestDto.getPassword() != null) {
+            String encodedPassword = passwordEncoder.encode(userRequestDto.getPassword());
+            userRequestDto.setPassword(encodedPassword);
+        }
         User user = userRepository.findById(id).orElseThrow();
         User updated = userMapper.partialUpdate(userRequestDto, user);
         User saved = userRepository.save(updated);
