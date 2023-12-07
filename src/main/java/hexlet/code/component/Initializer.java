@@ -26,7 +26,9 @@ public class Initializer implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         User defaultUser = userRepository.findByEmail("hexlet@example.com").orElse(null);
-        if (defaultUser != null) return;
+        if (defaultUser != null) {
+            return;
+        }
         User user = new User();
         user.setEmail("hexlet@example.com");
         user.setFirstName("John");

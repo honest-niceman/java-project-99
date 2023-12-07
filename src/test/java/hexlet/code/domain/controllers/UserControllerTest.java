@@ -55,7 +55,7 @@ public class UserControllerTest {
         var id = "101";
         mockMvc.perform(delete("/api/users/{id}", id)
                         .with(SecurityMockMvcRequestPostProcessors.user("admin")))
-                .andExpect(status().isOk())
+                .andExpect(status().isNoContent())
                 .andDo(print());
     }
 
