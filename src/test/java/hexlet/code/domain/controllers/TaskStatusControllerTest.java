@@ -97,8 +97,8 @@ public class TaskStatusControllerTest {
                         .isCreated())
                 .andDo(print());
 
-        var task = taskStatusRepository.findBySlug(data.getSlug());
-        assertNotNull(task.get());
+        var taskStatus = taskStatusRepository.findBySlug(data.getSlug());
+        assertNotNull(taskStatus.get());
     }
 
     @Test

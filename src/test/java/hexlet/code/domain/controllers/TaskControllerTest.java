@@ -1,12 +1,12 @@
 package hexlet.code.domain.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import hexlet.code.utils.ModelGenerator;
 import hexlet.code.dto.TaskRequest;
 import hexlet.code.model.Task;
 import hexlet.code.repository.LabelRepository;
 import hexlet.code.repository.TaskRepository;
 import hexlet.code.repository.TaskStatusRepository;
+import hexlet.code.utils.ModelGenerator;
 import org.instancio.Instancio;
 import org.instancio.Select;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,6 +21,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Set;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -102,7 +103,8 @@ public class TaskControllerTest {
         var taskStatus = taskStatusRepository.findBySlug("draft").get();
         var label = labelRepository.findByName("feature").get();
         var data = new TaskRequest();
-        data.setTitle("New Task Name");
+        String name = "New Task Name";
+        data.setTitle(name);
         data.setStatus(taskStatus.getSlug());
         data.setTaskLabelIds(Set.of(label.getId()));
 
@@ -113,6 +115,9 @@ public class TaskControllerTest {
                 .andExpect(status()
                         .isCreated())
                 .andDo(print());
+
+        var task = taskRepository.findByName(name);
+        assertNotNull(task.get());
     }
 
     @Test
