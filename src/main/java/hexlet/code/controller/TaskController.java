@@ -3,7 +3,7 @@ package hexlet.code.controller;
 import hexlet.code.dto.TaskRequest;
 import hexlet.code.dto.TaskResponse;
 import hexlet.code.service.TaskService;
-import hexlet.code.specification.TaskParams;
+import hexlet.code.dto.TaskParams;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
